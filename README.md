@@ -22,6 +22,18 @@ The framework enables small parameter models (3B-7B) without vision capabilities
 
 ---
 
+## 🎥 Live Demo
+
+Gemini (text-only LLM) controlling a remote Linux server via **AgentLink** — solving a ReCAPTCHA, launching Chrome, searching Google, and browsing CNN news.
+
+All actions are performed using **local vision only** (EasyOCR + blob detection) with zero paid vision APIs.
+
+[![AgentLink Demo: Gemini Solves CAPTCHA & Browses Internet](https://img.youtube.com/vi/oqaWF77UKIY/0.jpg)](https://youtu.be/oqaWF77UKIY)
+
+**Watch how AgentLink gives text-only models full visual + tactile control over a remote machine.**
+
+
+
 ## Architecture
 
 ```
