@@ -6,12 +6,12 @@
   },
   {
     "name": "brain-1",
-    "ip": "173.249.50.30",
+    "ip": "192.168.1.101",
     "status": "online"
   },
   {
     "name": "brain2",
-    "ip": "173.249.50.30",
+    "ip": "192.168.1.102",
     "status": "ENROLLED",
     "active_model": "---"
   }

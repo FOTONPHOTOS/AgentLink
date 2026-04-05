@@ -5,8 +5,7 @@ import { spawn } from 'child_process';
 const MAILBOX = '/root/AgentLink/mailbox';
 const SESSION_LOG = '/root/AgentLink/session_stream.log';
 const BRIDGE_LOG = '/root/AgentLink/bridge_internal.log';
-const REMOTE_IP = '173.249.50.30';
-const REMOTE_PASS = 'aC33607982';
+const VAULT_PATH = '/root/AgentLink/hub/vault.json';
 
 const log = (msg) => {
     const entry = `[${new Date().toLocaleTimeString()}] ${msg}\n`;
@@ -14,16 +13,38 @@ const log = (msg) => {
     fs.appendFileSync(BRIDGE_LOG, entry);
 };
 
-log('🌐 AGENTLINK BRIDGE V29: INTERACTION PROTOCOL.');
+log('AGENTLINK BRIDGE V29: INTERACTION PROTOCOL.');
+
+// Load credentials from encrypted vault
+const loadVaultCredentials = () => {
+    try {
+        const vault = JSON.parse(fs.readFileSync(VAULT_PATH, 'utf8'));
+        return vault;
+    } catch (e) {
+        log('ERROR: Could not load vault.json. Ensure credentials are configured.');
+        return {};
+    }
+};
 
 let spoke = null;
 
 const connectSpoke = () => {
-    log(`🔗 Opening Sentinel Link to ${REMOTE_IP}...`);
+    const vault = loadVaultCredentials();
+    const nodeName = process.env.AGENTLINK_NODE || 'brain2';
+    const nodeConfig = vault[nodeName];
+    
+    if (!nodeConfig || !nodeConfig.ip || !nodeConfig.pass) {
+        log(`ERROR: No configuration found for node '${nodeName}' in vault.json`);
+        log('Please configure hub/vault.json with your node credentials.');
+        setTimeout(connectSpoke, 10000);
+        return;
+    }
+
+    log(`Opening Sentinel Link to ${nodeConfig.ip}...`);
     spoke = spawn('sshpass', [
-        '-p', REMOTE_PASS,
+        '-p', nodeConfig.pass,
         'ssh', '-o', 'StrictHostKeyChecking=no',
-        `root@${REMOTE_IP}`,
+        `${nodeConfig.user}@${nodeConfig.ip}`,
         'node /root/AgentLink_Spoke.js'
     ]);
 
@@ -37,27 +58,27 @@ const connectSpoke = () => {
                 if (msg.type === 'stream') {
                     fs.appendFileSync(SESSION_LOG, msg.data);
                 } else if (msg.type === 'vision_data') {
-                    log(`👁 VISION RECEIVED: ${msg.data}`);
+                    log(`VISION RECEIVED: ${msg.data}`);
                     const parts = msg.data.split('|');
                     if (parts[0] === 'SIGHT_SUCCESS') {
                         const remotePath = parts[2];
                         const localPath = `/root/AgentLink/vision/latest_grid.png`;
                         if (!fs.existsSync('/root/AgentLink/vision')) fs.mkdirSync('/root/AgentLink/vision', { recursive: true });
-                        spawn('sshpass', ['-p', REMOTE_PASS, 'scp', `root@${REMOTE_IP}:${remotePath}`, localPath]);
-                        log(`📸 DOWNLOADED GRID TO: ${localPath}`);
+                        spawn('sshpass', ['-p', nodeConfig.pass, 'scp', `${nodeConfig.user}@${nodeConfig.ip}:${remotePath}`, localPath]);
+                        log(`DOWNLOADED GRID TO: ${localPath}`);
                     }
                 } else if (msg.type === 'pong') {
-                    log(`🏓 PONG RECEIVED`);
+                    log(`PONG RECEIVED`);
                 } else if (msg.type === 'status') {
-                    log(` STATUS: ${msg.data}`);
+                    log(`STATUS: ${msg.data}`);
                 }
-            } catch(e) { 
-                log(`📡 MSG: ${line}`);
+            } catch(e) {
+                log(`MSG: ${line}`);
             }
         });
     });
 
-    spoke.stderr.on('data', (data) => log(`❌ SSH ERR: ${data.toString()}`));
+    spoke.stderr.on('data', (data) => log(`SSH ERR: ${data.toString()}`));
     spoke.on('exit', () => setTimeout(connectSpoke, 3000));
 };
 
@@ -73,7 +94,7 @@ setInterval(() => {
             const p = path.join(inbox, file);
             const mission = JSON.parse(fs.readFileSync(p, 'utf8'));
             fs.unlinkSync(p);
-            log(` MISSION: ${mission.type}`);
+            log(`MISSION: ${mission.type}`);
             if (spoke && spoke.stdin.writable) {
                 spoke.stdin.write(JSON.stringify(mission) + '\n');
             }
