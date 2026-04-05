@@ -123,6 +123,33 @@ Captures screens, reads configurations via OCR, verifies security settings, and 
 ### Remote AI Agent Orchestration
 Discovers remote AI agents, launches them, sends instructions, and monitors outputs. Distributed AI agent swarms working collaboratively across multiple machines.
 
+## Advanced & Undiscovered Use Cases
+
+While AgentLink excels at standard automation tasks, its distributed architecture, Sovereign Bridge, and local vision capabilities unlock several powerful, less obvious applications:
+
+### Hierarchical Agent Swarms
+A master agent can dynamically spawn and orchestrate specialized sub-agents across multiple nodes (one for vision analysis, one for execution, one for verification). This enables self-organizing agent teams for complex workflows like automated financial reconciliation across legacy banking systems and modern web dashboards.
+
+### Stealth / Low-Trace Operations
+Using ghost mode and the neural sanitizer, agents can perform actions with minimal visual footprint. Ideal for compliance auditing in regulated environments, security red-teaming, or continuous silent monitoring of internal tools without triggering alerts.
+
+### Federated Visual Knowledge Sharing
+Nodes in a fleet can share semantic annotations of similar UIs (e.g., corporate ERP systems). Over time, the swarm builds a private, decentralized visual knowledge base — improving accuracy across standardized but non-API software without cloud training.
+
+### Adaptive Long-Term Memory & Personalization
+Persistent mission tracking and active context anchors allow agents to remember user-specific workflow quirks across days or weeks. This turns AgentLink into a truly personalized AI assistant that learns and adapts to your exact digital habits across multiple machines.
+
+### High-Precision & High-Stakes Tasks
+The zoomed verification and grid-based tools enable pixel-perfect operations in sensitive interfaces (medical records, CAD software, trading platforms). Agents iteratively zoom, verify, and only act when confidence exceeds a high threshold — reducing errors in critical environments.
+
+### Air-Gapped & Low-Bandwidth Deployments
+The file-based mission protocol works with minimal or intermittent connectivity. Perfect for secure government/defense environments, offline factories, or remote sites where cloud vision APIs are prohibited.
+
+### Human-AI Collaborative Workflows
+AgentLink can act as a co-pilot layer where humans remain in the loop for approvals, while the agent handles repetitive visual navigation and verification. Especially valuable in helpdesks or enterprise operations where junior staff trigger missions and seniors review only exceptions.
+
+These use cases leverage AgentLink’s core strengths: **zero-cost local vision**, **true distributed orchestration**, and **sovereign control** — making it a foundational tool for private, secure, and cost-effective agentic AI systems.
+
 ---
 
 ## Quick Start
