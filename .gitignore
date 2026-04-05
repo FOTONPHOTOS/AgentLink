@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+*.log.old
+*.pid
+*.out
+*.err
+
+# Vision cache
+vision/
+
+# Models
+models/
+
+# Archives
+*.tar.gz
+*.zip
+tools_archive/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Mailbox
+mailbox/
+
+# Icons
+icons/
+*.png
+
+# Mission state
+mission.json
+mission_complete.png
+live_frame.png
+session_stream.log
+bridge*.log
+bridge*.log.old

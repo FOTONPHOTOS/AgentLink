@@ -1,0 +1,4 @@
+VLM Background Test Start
+Initial RAM: 0.63 GB
+Model Loaded. RAM: 0.89 GB
+Starting Inference...

@@ -1,0 +1,2 @@
+#!/bin/bash
+/root/AgentLink/venv/bin/python /root/AgentLink/hub/agentlink.py "$@"

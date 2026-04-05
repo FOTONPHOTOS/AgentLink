@@ -1,0 +1,18 @@
+[
+  {
+    "name": "local-node",
+    "ip": "127.0.0.1",
+    "status": "online"
+  },
+  {
+    "name": "brain-1",
+    "ip": "173.249.50.30",
+    "status": "online"
+  },
+  {
+    "name": "brain2",
+    "ip": "173.249.50.30",
+    "status": "ENROLLED",
+    "active_model": "---"
+  }
+]

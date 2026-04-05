@@ -1,0 +1,29 @@
+{
+  "name": "agentlink",
+  "version": "1.0.0",
+  "description": "Distributed Agentic Orchestrator (Hub & Spoke).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.4",
+    "body-parser": "^2.2.2",
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "commander": "^14.0.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ink": "^6.6.0",
+    "ink-select-input": "^6.2.0",
+    "ink-spinner": "^5.0.0",
+    "ink-text-input": "^6.0.0",
+    "node-pty": "^1.1.0",
+    "react": "^19.2.4",
+    "sucrase": "^3.35.1"
+  },
+  "type": "module"
+}
